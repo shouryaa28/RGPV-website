@@ -1,0 +1,48 @@
+<%include ./partials/header.ejs %>
+<style>
+  .card #aa{
+    background-color: rgb(243, 243, 87);
+  }
+</style>
+<div class="mx-2 my-2">
+  <h3>Trending hashtags</h3><br>
+  <a type="button" href="/posts/lnct" class="btn btn-outline-secondary">#lnct</a><br><br>
+  <a type="button" class="btn btn-outline-secondary">#rgpv</a><br><br>
+  <a class="btn btn-primary" href="/profile">Write something</a><br><hr>
+  <h3>Latest Feeds</h3><hr>
+  <% if(foundPosts.length > 0){ %>
+    <% foundPosts.reverse().forEach(function(data){ %>
+      <div class="card mx-2 my-2 p-2" style="width: 18rem;">
+        <% if(data.image != undefined){ %>
+        <% if(data.image.substring(data.image.length-3) == "pdf"){ %>
+          <a download class=" text-black" id="aa" href="/images/uploads/<%= data.image %>"><%= data.image %></a>
+        <% } else if(data.image){ %>
+          <img src="/images/uploads/<%= data.image %>" class="card-img-top">
+        <% } %>
+        <% } %>
+          <div class="card-body">
+            <h5 class="card-title">@ <%= data.author.username %></h5>
+            <p class="card-text"><%= data.content %></p>
+            <a style="text-decoration: none;" href=""><%= data.likes.length %> Likes</a><br>
+            <a href="/like/post/<%= data._id %>" class="btn btn-primary">Vote Up 👍</a><br>
+            <a href="/report/post/<%= data._id %>" class="btn btn-danger">Report this user?</a>
+          </div>
+      </div>
+      <% }) %>
+      <% } else { %>
+        <h4>No posts available !!😟</h4>
+        <% } %>
+      </div>
+      
+     <script>
+      document.addEventListener("DOMContentLoaded", function(event) { 
+          var scrollpos = localStorage.getItem('scrollpos');
+          if (scrollpos) window.scrollTo(0, scrollpos);
+      });
+
+      window.onbeforeunload = function(e) {
+          localStorage.setItem('scrollpos', window.scrollY);
+      };
+  </script>
+        
+<%include ./partials/footer.ejs %>

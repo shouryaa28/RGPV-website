@@ -1,0 +1,24 @@
+<%include ./partials/header.ejs %>
+<form action="/register" method="post">
+  <div class="mx-2 my-2">
+    <h3>Register Now 😎✨</h3>
+    <hr>
+    <div class="mb-3">
+      <label for="exampleInputUsername1" class="form-label">Username</label>
+      <input name="username" type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your details with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputUsername1" class="form-label">Email</label>
+      <input name="email" type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button><br><br>
+    <a href="/login">Already an user?</a>
+  </div>
+  </form>
+
+<%include ./partials/footer.ejs %>
